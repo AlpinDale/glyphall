@@ -15,8 +15,7 @@ A modern mobile browser with `deviceorientation` API support.
 ## Usage
 
 ```sh
-bun install
-bun run build
+bun add glyphall
 ```
 
 ```ts
