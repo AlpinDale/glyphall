@@ -1,0 +1,33 @@
+{
+  "name": "glyphall",
+  "description": "Pretext-powered glyph relayout and orientation animation for browser reading surfaces.",
+  "license": "MIT",
+  "type": "module",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "demo",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "dev": "HOST=${HOST:-127.0.0.1} PORT=${PORT:-3000} USE_TLS=0 bun --hot demo/server.mjs",
+    "dev:lan": "HOST=0.0.0.0 PORT=${PORT:-3000} USE_TLS=0 bun --hot demo/server.mjs",
+    "dev:https": "HOST=${HOST:-0.0.0.0} PORT=${PORT:-3000} USE_TLS=1 bun --hot demo/server.mjs",
+    "build:js": "rm -rf dist && bun build ./src/index.ts --outdir ./dist --target browser --format esm",
+    "build:types": "tsc -p tsconfig.build.json",
+    "build": "bun run build:js && bun run build:types",
+    "check": "tsc --noEmit",
+    "start": "bun run dev"
+  },
+  "dependencies": {
+    "@chenglou/pretext": "^0.0.3"
+  }
+}

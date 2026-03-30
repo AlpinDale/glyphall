@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>glyphall demo</title>
+    <style>
+      :root {
+        --bg: #0a0a0a;
+        --ink: #e9edf3;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        margin: 0;
+        min-height: 100%;
+      }
+
+      body {
+        background: var(--bg);
+        color: var(--ink);
+        font-family: Georgia, serif;
+      }
+
+      .app {
+        min-height: 100vh;
+        width: 100%;
+        overflow: hidden;
+      }
+
+      .viewport {
+        position: relative;
+        width: 100vw;
+        height: 100vh;
+        overflow: hidden;
+      }
+
+      .page {
+        position: relative;
+        overflow: hidden;
+        background: transparent;
+      }
+
+      .page-frame {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform-origin: center center;
+        will-change: transform, width, height;
+        pointer-events: none;
+      }
+
+      .glyphall-glyph {
+        text-shadow: 0 1px 0 rgba(0, 0, 0, 0.18);
+      }
+
+      .sensor-toggle {
+        position: absolute;
+        left: 50%;
+        bottom: max(24px, env(safe-area-inset-bottom));
+        z-index: 10;
+        transform: translateX(-50%);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-radius: 999px;
+        padding: 10px 16px;
+        background: rgba(255, 255, 255, 0.06);
+        color: var(--ink);
+        font: 600 14px/1.1 system-ui, sans-serif;
+        letter-spacing: 0.01em;
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+      }
+
+      .sensor-toggle[hidden] {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="app">
+      <div class="viewport" id="viewport">
+        <div class="page-frame" id="page-frame">
+          <div class="page" id="page"></div>
+        </div>
+        <button class="sensor-toggle" id="sensor-toggle" hidden>Enable motion</button>
+      </div>
+    </main>
+    <script type="module" src="/app.js"></script>
+  </body>
+</html>
